@@ -13,7 +13,7 @@ export class AppComponent {
   items: Observable<any[]>;
 
   constructor(db: AngularFireDatabase) {
-    this.itemsRef = db.list('develop');
+    this.itemsRef = db.list('persons');
     this.items = this.itemsRef
       .snapshotChanges()
       .pipe(
