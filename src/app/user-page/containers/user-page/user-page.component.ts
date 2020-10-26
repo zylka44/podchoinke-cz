@@ -7,11 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-page.component.scss'],
 })
 export class UserPageComponent implements OnInit {
+  name: string;
+
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.name = this.router.url.split('/')[2].toUpperCase();
+  }
 
-  onLogOut() {
+  onLogOut(): void {
     this.router.navigate([`/login`]);
   }
 }

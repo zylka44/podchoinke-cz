@@ -7,11 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
+  users = ['tata', 'mama', 'mariusz', 'zaneta', 'marek', 'damian', 'maciek'];
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
-  onButtonClick() {
-    this.router.navigate([`/user`]);
+  onButtonClick(name: string): void {
+    this.router.navigate([`/user/${name}`]);
   }
 }
