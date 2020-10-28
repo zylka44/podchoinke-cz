@@ -1,6 +1,15 @@
-<h1>POD CHOINKĘ - LOGOWANIE</h1>
+<h1>POD CHOINKĘ</h1>
 
-<ng-container *ngFor="let user of users">
-  <button (click)="onButtonClick(user)">{{ user | uppercase }}</button>
-</ng-container>
+<div class="users">
+  <button
+  *ngFor="let user of users | async"
+  (click)="onButtonClick(user.name, user.password)">
+    {{user.fullName}}
+  </button>
+</div>
 
+<div id="login" class="login" [style.display]="selectedUserName ? 'inline' : 'none'">
+  <input id="password" type="password" #password (input)="onInputChange(password.value)"/>
+  <button (click)="onLogin()">zaloguj</button>
+  <div id="loginError"></div>
+</div>
