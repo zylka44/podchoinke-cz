@@ -2,7 +2,7 @@
 
 <div class="users">
   <button
-  *ngFor="let user of users | async"
+  *ngFor="let user of users$ | async"
   (click)="onButtonClick(user.name, user.password)">
     {{user.fullName}}
   </button>

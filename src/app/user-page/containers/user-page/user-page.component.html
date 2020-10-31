@@ -1,3 +1,15 @@
-<h1>{{ name }}</h1>
+<div class="logOut" (click)="onLogOut()">wyloguj</div>
 
-<button (click)="onLogOut()">wyloguj</button>
+<h1>{{ (user$ | async).fullName | uppercase }}</h1>
+
+<div class="letterOwners">
+  <button>MÓJ LIST</button>
+  &nbsp;
+  <button
+  *ngFor="let user of otherUsers$ | async"
+  (click)="onOwnerButtonClick(user.name)">
+    {{user.fullName}}
+  </button>
+</div>
+
+<app-letter [user]="user$ | async"></app-letter>

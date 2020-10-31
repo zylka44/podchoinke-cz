@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs';
@@ -10,20 +10,20 @@ import { Observable } from 'rxjs';
 })
 export class LoginPageComponent {
   usersRef: AngularFireList<any>;
-  users: Observable<any[]>;
+  users$: Observable<any[]>;
   selectedUserName: string;
   selectedUserExpectedPassword: string;
   selectedUserEnterdPassword: string;
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(e: KeyboardEvent): void {
+    if (e.key === 'Enter' && this.selectedUserEnterdPassword) {
+      this.onLogin();
+    }
+  }
 
   constructor(private router: Router, private db: AngularFireDatabase) {
     this.usersRef = db.list('users');
-    this.users = this.usersRef.valueChanges();
-
-    document.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter' && this.selectedUserEnterdPassword) {
-        this.onLogin();
-      }
-    });
+    this.users$ = this.usersRef.valueChanges();
   }
 
   onButtonClick(name: string, password: string): void {
@@ -33,8 +33,6 @@ export class LoginPageComponent {
   }
 
   onLogin(): void {
-    console.log(this.selectedUserEnterdPassword);
-    console.log(this.selectedUserExpectedPassword);
     if (this.selectedUserEnterdPassword === this.selectedUserExpectedPassword) {
       document.removeEventListener('keypress', () => {});
       this.router.navigate([`/user/${this.selectedUserName}`]);
