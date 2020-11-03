@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/models/users';
 
 @Component({
   selector: 'app-login-page',
@@ -9,8 +10,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
-  usersRef: AngularFireList<any>;
-  users$: Observable<any[]>;
+  usersRef: AngularFireList<User>;
+  users$: Observable<User[]>;
   selectedUserName: string;
   selectedUserExpectedPassword: string;
   selectedUserEnterdPassword: string;

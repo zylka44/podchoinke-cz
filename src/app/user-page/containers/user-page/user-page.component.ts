@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { User } from 'src/app/models/users';
 
 @Component({
   selector: 'app-user-page',
@@ -10,10 +11,10 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./user-page.component.scss'],
 })
 export class UserPageComponent implements OnInit {
-  usersRef: AngularFireList<any>;
-  users$: Observable<any[]>;
-  user$: Observable<any>;
-  otherUsers$: Observable<any[]>;
+  usersRef: AngularFireList<User>;
+  users$: Observable<User[]>;
+  user$: Observable<User>;
+  otherUsers$: Observable<User[]>;
   name: string;
 
   constructor(private router: Router, private db: AngularFireDatabase) {
