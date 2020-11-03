@@ -1,16 +1,16 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/users';
+import { UsersService } from 'src/app/users.service';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
 })
-export class LoginPageComponent {
-  usersRef: AngularFireList<User>;
+export class LoginPageComponent implements OnInit {
   users$: Observable<User[]>;
   selectedUserName: string;
   selectedUserExpectedPassword: string;
@@ -22,9 +22,10 @@ export class LoginPageComponent {
     }
   }
 
-  constructor(private router: Router, private db: AngularFireDatabase) {
-    this.usersRef = db.list('users');
-    this.users$ = this.usersRef.valueChanges();
+  constructor(private router: Router, private usersService: UsersService) {}
+
+  ngOnInit(): void {
+    this.users$ = this.usersService.getUsers();
   }
 
   onButtonClick(name: string, password: string): void {
