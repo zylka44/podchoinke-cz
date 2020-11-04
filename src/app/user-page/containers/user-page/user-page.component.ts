@@ -16,6 +16,11 @@ export class UserPageComponent implements OnInit {
   user$: Observable<User>;
   otherUsers$: Observable<User[]>;
   name: string;
+  emptyUser = {
+    name: '',
+    fullName: '',
+    password: '',
+  };
 
   constructor(private router: Router, private usersService: UsersService) {}
 
@@ -23,7 +28,6 @@ export class UserPageComponent implements OnInit {
     this.users$ = this.usersService.getUsers();
     this.name = this.router.url.split('/')[2];
     this.user$ = this.usersService.getUserOfName(this.name);
-    this.user$.subscribe(console.log);
     this.otherUsers$ = this.users$.pipe(
       map((users) => users.filter((user) => user.name !== this.name))
     );

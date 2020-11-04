@@ -8,6 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class LetterComponent implements OnInit {
   @Input() user: any;
+  emptyUser = {
+    name: '',
+    fullName: '',
+    password: '',
+  };
 
   constructor() {}
 

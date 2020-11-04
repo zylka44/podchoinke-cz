@@ -1,6 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/users';
 import { UsersService } from 'src/app/users.service';
@@ -22,7 +21,14 @@ export class LoginPageComponent implements OnInit {
     }
   }
 
-  constructor(private router: Router, private usersService: UsersService) {}
+  constructor(private router: Router, private usersService: UsersService) {
+    this.usersService.updateUser('MLJaaWgwxRgHtg6xyDr', {
+      name: 'zosia',
+      fullName: 'Zosia',
+      password: 'roraty',
+      gifts: 'rower',
+    });
+  }
 
   ngOnInit(): void {
     this.users$ = this.usersService.getUsers();
