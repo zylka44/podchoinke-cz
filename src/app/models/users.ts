@@ -2,7 +2,7 @@ export interface User {
   name: string;
   fullName: string;
   password: string;
-  gifts: string;
+  gifts: Gift[];
 }
 
 export interface Gift {

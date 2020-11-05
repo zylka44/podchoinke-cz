@@ -22,12 +22,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   constructor(private router: Router, private usersService: UsersService) {
-    this.usersService.updateUser('MLJaaWgwxRgHtg6xyDr', {
-      name: 'zosia',
-      fullName: 'Zosia',
-      password: 'roraty',
-      gifts: 'rower',
-    });
+    this.usersService.removeGift('MLJaaWgwxRgHtg6xyDr', '1');
   }
 
   ngOnInit(): void {

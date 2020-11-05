@@ -31,19 +31,23 @@ export class UsersService {
     this.users$.update(key, user);
   }
 
-  deleteUser(key: string): void {
+  removeUser(key: string): void {
     this.users$.remove(key);
   }
 
-  deleteAllUsers(): void {
+  removeAllUsers(): void {
     this.users$.remove();
   }
 
   addGift(key: string, gift: Gift): void {
-    this.users$.update(key, { gifts: [gift] });
+    this.db.list(`users/${key}/gifts`).push(gift);
   }
 
-  updateGifts(key: string, gifts: string): void {
-    this.users$.update(key, { name: 'sth' });
+  removeGift(key: string, giftKey: string): void {
+    this.db.list(`users/${key}/gifts`).remove(giftKey);
+  }
+
+  updateGifts(key: string, gifts: Gift[]): void {
+    this.users$.update(key, { gifts: [...gifts] });
   }
 }

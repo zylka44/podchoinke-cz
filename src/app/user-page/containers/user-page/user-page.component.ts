@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from 'src/app/models/users';
@@ -16,10 +15,11 @@ export class UserPageComponent implements OnInit {
   user$: Observable<User>;
   otherUsers$: Observable<User[]>;
   name: string;
-  emptyUser = {
+  emptyUser: User = {
     name: '',
     fullName: '',
     password: '',
+    gifts: [],
   };
 
   constructor(private router: Router, private usersService: UsersService) {}
