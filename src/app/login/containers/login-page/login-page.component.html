@@ -3,7 +3,7 @@
 <div class="users">
   <button
   *ngFor="let user of users$ | async"
-  (click)="onButtonClick(user.name, user.password)">
+  (click)="onUserButtonClick(user.name, user.password)">
     {{user.fullName}}
   </button>
 </div>

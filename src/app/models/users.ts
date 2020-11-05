@@ -6,7 +6,7 @@ export interface User {
 }
 
 export interface Gift {
-  name: string;
+  description: string;
   link: string;
   reservation: string;
 }

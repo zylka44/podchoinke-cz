@@ -1,1 +1,8 @@
-<p>{{ (user || emptyUser).name }}</p>
+<div class="gifts">
+  <div class="gift" *ngFor="let gift of (user || emptyUser).gifts">{{ gift.description}}</div>
+</div>
+
+<div class="addGift">
+  <input id="addGift" #addGift autofocus (keyup)="onKey($event)"/>
+  <button (click)="onAddButtonClick()">dodaj prezent</button>
+</div>

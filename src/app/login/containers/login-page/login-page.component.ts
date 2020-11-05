@@ -21,15 +21,13 @@ export class LoginPageComponent implements OnInit {
     }
   }
 
-  constructor(private router: Router, private usersService: UsersService) {
-    this.usersService.removeGift('MLJaaWgwxRgHtg6xyDr', '1');
-  }
+  constructor(private router: Router, private usersService: UsersService) {}
 
   ngOnInit(): void {
     this.users$ = this.usersService.getUsers();
   }
 
-  onButtonClick(name: string, password: string): void {
+  onUserButtonClick(name: string, password: string): void {
     this.selectedUserName = name;
     this.selectedUserExpectedPassword = password;
     setTimeout(() => document.getElementById('password').focus(), 0);
@@ -37,7 +35,6 @@ export class LoginPageComponent implements OnInit {
 
   onLogin(): void {
     if (this.selectedUserEnterdPassword === this.selectedUserExpectedPassword) {
-      document.removeEventListener('keypress', () => {});
       this.router.navigate([`/user/${this.selectedUserName}`]);
     } else {
       document.getElementById('loginError').innerHTML = 'nieprawidłowe hasło';
