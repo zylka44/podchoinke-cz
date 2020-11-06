@@ -25,6 +25,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.users$ = this.usersService.getUsers();
+    this.usersService.updateUserPassword('-MLOgK-Cykz3IubDTNm3', 'kolanko');
   }
 
   onUserButtonClick(name: string, password: string): void {

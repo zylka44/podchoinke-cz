@@ -14,7 +14,19 @@ export class UsersService {
   }
 
   getUsers(): Observable<any> {
-    return this.users$.valueChanges();
+    return this.users$
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      );
+  }
+
+  getUserOfKey(key: string): Observable<User> {
+    return this.getUsers().pipe(
+      map((users) => users.find((user) => user.key === key))
+    );
   }
 
   getUserOfName(name: string): Observable<User> {
@@ -23,12 +35,13 @@ export class UsersService {
     );
   }
 
-  addUser(user: User): void {
-    this.users$.push(user);
+  addUser(name: string, fullName: string, password: string): void {
+    const newUser = { name, fullName, password, gifts: '' };
+    this.users$.push(newUser);
   }
 
-  updateUser(key: string, user: User): void {
-    this.users$.update(key, user);
+  updateUserPassword(key: string, password: string): void {
+    this.users$.update(key, { password });
   }
 
   removeUser(key: string): void {

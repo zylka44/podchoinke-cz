@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { User } from 'src/app/models/users';
 import { UsersService } from 'src/app/users.service';
 
 @Component({
@@ -9,18 +8,6 @@ import { UsersService } from 'src/app/users.service';
 })
 export class LetterComponent {
   @Input() user: any;
-  emptyUser: User = {
-    name: '',
-    fullName: '',
-    password: '',
-    gifts: [
-      {
-        description: '',
-        link: '',
-        reservation: '',
-      },
-    ],
-  };
   newGiftDescription: string;
 
   constructor(private usersService: UsersService) {}
