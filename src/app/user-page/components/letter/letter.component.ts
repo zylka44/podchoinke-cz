@@ -50,4 +50,9 @@ export class LetterComponent implements OnInit {
     document.getElementById('addGift')[`value`] = '';
     document.getElementById('addGift').focus();
   }
+
+  onRemoveButtonClick(giftKey: string): void {
+    console.log('remove', giftKey);
+    this.usersService.removeGift(this.userKey, giftKey);
+  }
 }
