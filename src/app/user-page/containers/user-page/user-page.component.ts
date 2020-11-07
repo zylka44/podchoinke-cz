@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,19 +10,28 @@ import { UsersService } from 'src/app/users.service';
   templateUrl: './user-page.component.html',
   styleUrls: ['./user-page.component.scss'],
 })
-export class UserPageComponent {
-  users$: Observable<User[]> = this.usersService.getUsers();
-  name = this.router.url.split('/')[2];
-  user$: Observable<User> = this.usersService.getUserOfName(this.name);
-  userFullName$: Observable<string> = this.user$.pipe(
-    map((user) => user.fullName)
-  );
-  userKey: Observable<string> = this.user$.pipe(map((user) => user.key));
-  otherUsers$: Observable<User[]> = this.users$.pipe(
-    map((users) => users.filter((user) => user.name !== this.name))
-  );
+export class UserPageComponent implements OnInit {
+  users$: Observable<User[]>;
+  user$: Observable<User>;
+  otherUsers$: Observable<User[]>;
+  name: string;
+  emptyUser: User = {
+    name: '',
+    fullName: '',
+    password: '',
+    gifts: [],
+  };
 
   constructor(private router: Router, private usersService: UsersService) {}
+
+  ngOnInit(): void {
+    this.users$ = this.usersService.getUsers();
+    this.name = this.router.url.split('/')[2];
+    this.user$ = this.usersService.getUserOfName(this.name);
+    this.otherUsers$ = this.users$.pipe(
+      map((users) => users.filter((user) => user.name !== this.name))
+    );
+  }
 
   onLogOut(): void {
     this.router.navigate([`/login`]);
