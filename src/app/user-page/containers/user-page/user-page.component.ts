@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from 'src/app/models/users';
+import { Gift, User } from 'src/app/models/users';
 import { UsersService } from 'src/app/users.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class UserPageComponent {
   userFullName$: Observable<string> = this.user$.pipe(
     map((user) => user.fullName)
   );
-  userKey: Observable<string> = this.user$.pipe(map((user) => user.key));
+  userKey$: Observable<string> = this.user$.pipe(map((user) => user.key));
   otherUsers$: Observable<User[]> = this.users$.pipe(
     map((users) => users.filter((user) => user.name !== this.name))
   );

@@ -1,8 +1,11 @@
-<!-- <div class="gifts">
-  <div class="gift" *ngFor="let gift of (user || emptyUser).gifts">{{ gift.description}}</div>
+<div *ngFor="let gift of ((user$ | async) || emptyUser).gifts | keyvalue">
+  {{ gift.value.description }}
 </div>
 
 <div class="addGift">
   <input id="addGift" #addGift autofocus (keyup)="onKey($event)"/>
   <button (click)="onAddButtonClick()">dodaj prezent</button>
-</div> -->
+</div>
+
+
+

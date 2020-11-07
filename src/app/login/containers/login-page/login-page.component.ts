@@ -10,7 +10,7 @@ import { UsersService } from 'src/app/users.service';
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
-  users$: Observable<User[]>;
+  users$: Observable<User[]> = this.usersService.getUsers();
   selectedUserName: string;
   selectedUserExpectedPassword: string;
   selectedUserEnterdPassword: string;
@@ -24,8 +24,16 @@ export class LoginPageComponent implements OnInit {
   constructor(private router: Router, private usersService: UsersService) {}
 
   ngOnInit(): void {
-    this.users$ = this.usersService.getUsers();
-    this.usersService.updateUserPassword('-MLOgK-Cykz3IubDTNm3', 'kolanko');
+    // this.users$ = this.usersService.getUsers();
+    // this.usersService.addUser('tolek', 'Tolek', 'roraty');
+    // this.usersService
+    //   .getUsersGifts('-MLWXIXDte15LgfyjdYP')
+    //   .subscribe(console.log);
+    // this.usersService.addGift('-MLWXIXDte15LgfyjdYP', {
+    //   description: 'mis',
+    //   link: '',
+    //   reservation: '',
+    // });
   }
 
   onUserButtonClick(name: string, password: string): void {

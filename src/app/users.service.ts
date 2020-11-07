@@ -36,7 +36,8 @@ export class UsersService {
   }
 
   addUser(name: string, fullName: string, password: string): void {
-    const newUser = { name, fullName, password, gifts: '' };
+    const emptyGift = { description: '', link: '', reservation: '' };
+    const newUser = { name, fullName, password, gifts: [emptyGift] };
     this.users$.push(newUser);
   }
 
@@ -52,8 +53,18 @@ export class UsersService {
     this.users$.remove();
   }
 
+  getUsersGifts(key: string): Observable<Gift[]> {
+    return this.getUserOfKey(key).pipe(
+      map((user) => user.gifts.filter((gift) => gift.description.length > 0))
+    );
+  }
+
   addGift(key: string, gift: Gift): void {
     this.db.list(`users/${key}/gifts`).push(gift);
+  }
+
+  removeAllGifts(key): void {
+    this.db.list(`users/${key}/gifts`).remove();
   }
 
   removeGift(key: string, giftKey: string): void {
@@ -62,5 +73,9 @@ export class UsersService {
 
   updateGifts(key: string, gifts: Gift[]): void {
     this.users$.update(key, { gifts: [...gifts] });
+  }
+
+  getGiftsOfKey(key: string): Observable<any> {
+    return this.db.list(`users/${key}/gifts`).valueChanges();
   }
 }
