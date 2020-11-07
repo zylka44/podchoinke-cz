@@ -74,8 +74,4 @@ export class UsersService {
   updateGifts(key: string, gifts: Gift[]): void {
     this.users$.update(key, { gifts: [...gifts] });
   }
-
-  getGiftsOfKey(key: string): Observable<any> {
-    return this.db.list(`users/${key}/gifts`).valueChanges();
-  }
 }

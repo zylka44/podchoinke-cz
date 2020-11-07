@@ -1,6 +1,6 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Gift, User } from 'src/app/models/users';
+import { User } from 'src/app/models/users';
 import { UsersService } from 'src/app/users.service';
 
 @Component({
@@ -11,7 +11,6 @@ import { UsersService } from 'src/app/users.service';
 export class LetterComponent implements OnInit {
   @Input() userKey: string;
   @Input() user$: Observable<User>;
-  gifts$: Observable<Gift[]>;
   newGiftDescription: string;
   emptyUser: User = {
     key: '',

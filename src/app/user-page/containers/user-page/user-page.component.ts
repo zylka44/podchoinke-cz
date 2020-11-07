@@ -28,7 +28,7 @@ export class UserPageComponent {
     this.router.navigate([`/login`]);
   }
 
-  onOwnerButtonClick(owner: string): void {
-    console.log(owner);
+  onOwnerButtonClick(ownerKey: string): void {
+    console.log(ownerKey);
   }
 }

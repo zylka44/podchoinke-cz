@@ -13,8 +13,3 @@
   <button (click)="onLogin()">zaloguj</button>
   <div id="loginError"></div>
 </div>
-
-<div *ngFor="let user of users$ | async">
-  {{ user.fullName }}
-  <div *ngFor="let gift of user.gifts | keyvalue">{{ gift.value.description }}</div>
-</div>

@@ -3,11 +3,11 @@
 <h1>{{ (userFullName$ | async) | uppercase }}</h1>
 
 <div class="letterOwners">
-  <button>MÓJ LIST</button>
+  <button (click)="onOwnerButtonClick()">MÓJ LIST</button>
   &nbsp;
   <button
   *ngFor="let user of otherUsers$ | async"
-  (click)="onOwnerButtonClick(user.name)">
+  (click)="onOwnerButtonClick(user.key)">
     {{user.fullName}}
   </button>
 </div>

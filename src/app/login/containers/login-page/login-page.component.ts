@@ -24,16 +24,7 @@ export class LoginPageComponent implements OnInit {
   constructor(private router: Router, private usersService: UsersService) {}
 
   ngOnInit(): void {
-    // this.users$ = this.usersService.getUsers();
-    // this.usersService.addUser('tolek', 'Tolek', 'roraty');
-    // this.usersService
-    //   .getUsersGifts('-MLWXIXDte15LgfyjdYP')
-    //   .subscribe(console.log);
-    // this.usersService.addGift('-MLWXIXDte15LgfyjdYP', {
-    //   description: 'mis',
-    //   link: '',
-    //   reservation: '',
-    // });
+    // this.usersService.addUser('magda', 'Magda', 'roraty');
   }
 
   onUserButtonClick(name: string, password: string): void {
