@@ -1,6 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { User } from 'src/app/models/users';
+import { Component, HostListener, Input } from '@angular/core';
 import { UsersService } from 'src/app/users.service';
 
 @Component({
@@ -8,23 +6,10 @@ import { UsersService } from 'src/app/users.service';
   templateUrl: './letter.component.html',
   styleUrls: ['./letter.component.scss'],
 })
-export class LetterComponent implements OnInit {
+export class LetterComponent {
   @Input() userKey: string;
-  @Input() user$: Observable<User>;
+  @Input() user;
   newGiftDescription: string;
-  emptyUser: User = {
-    key: '',
-    name: '',
-    fullName: '',
-    password: '',
-    gifts: [
-      {
-        description: '',
-        link: '',
-        reservation: '',
-      },
-    ],
-  };
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(e: KeyboardEvent): void {
     if (e.key === 'Enter' && this.newGiftDescription.length > 0) {
@@ -33,8 +18,6 @@ export class LetterComponent implements OnInit {
   }
 
   constructor(private usersService: UsersService) {}
-
-  ngOnInit(): void {}
 
   onKey(event): void {
     this.newGiftDescription = event.target.value;
