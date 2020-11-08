@@ -1,16 +1,15 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, HostListener, Input } from '@angular/core';
 import { User } from 'src/app/models/users';
 import { UsersService } from 'src/app/users.service';
 
 @Component({
   selector: 'app-letter',
   templateUrl: './letter.component.html',
-  styleUrls: ['./letter.component.scss'],
+  styleUrls: [ './letter.component.scss' ],
 })
-export class LetterComponent implements OnInit {
+export class LetterComponent {
   @Input() userKey: string;
-  @Input() user$: Observable<User>;
+  @Input() user;
   newGiftDescription: string;
   emptyUser: User = {
     key: '',
@@ -34,7 +33,6 @@ export class LetterComponent implements OnInit {
 
   constructor(private usersService: UsersService) {}
 
-  ngOnInit(): void {}
 
   onKey(event): void {
     this.newGiftDescription = event.target.value;

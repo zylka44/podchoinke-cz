@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Gift, User } from './models/users';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +14,7 @@ export class UsersService {
   }
 
   getUsers(): Observable<any> {
+
     return this.users$
       .snapshotChanges()
       .pipe(
@@ -31,7 +32,8 @@ export class UsersService {
 
   getUserOfName(name: string): Observable<User> {
     return this.getUsers().pipe(
-      map((users) => users.find((user) => user.name === name))
+      map((users) => users.find((user) => user.name === name)),
+      /*      first(val => val !== null)*/
     );
   }
 

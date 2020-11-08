@@ -2,7 +2,7 @@
 
 <h1>{{ (userFullName$ | async) | uppercase }}</h1>
 
-<div class="letterOwners">
+<!--<div class="letterOwners">
   <button (click)="onOwnerButtonClick()">MÓJ LIST</button>
   &nbsp;
   <button
@@ -10,6 +10,6 @@
   (click)="onOwnerButtonClick(user.key)">
     {{user.fullName}}
   </button>
-</div>
+</div>-->
 
-<app-letter [userKey]="userKey$ | async" [user$]="user$"></app-letter>
+<app-letter [user]="user$ | async"></app-letter>

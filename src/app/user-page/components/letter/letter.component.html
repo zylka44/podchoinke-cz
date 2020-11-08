@@ -1,5 +1,5 @@
-<div *ngFor="let gift of ((user$ | async) || emptyUser).gifts | keyvalue">
-  <span class="removeGift" (click)="onRemoveButtonClick(gift.key)"> - </span> {{ gift.value.description }}
+<div *ngFor="let gift of user?.gifts | keyvalue ">
+  <span class="removeGift" (click)="onRemoveButtonClick(gift?.key)"> - </span> {{ gift?.value.description }}
 </div>
 
 <div class="addGift">
