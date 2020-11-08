@@ -7,8 +7,11 @@ import { LetterComponent } from './components/letter/letter.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @NgModule({
-  declarations: [UserPageComponent, LetterComponent],
-  imports: [CommonModule, UserPageRoutingModule],
-  providers: [AngularFirestore],
+  declarations: [
+    UserPageComponent,
+    LetterComponent
+  ],
+  imports: [ CommonModule, UserPageRoutingModule ],
+  providers: [ AngularFirestore ],
 })
 export class UserPageModule {}
