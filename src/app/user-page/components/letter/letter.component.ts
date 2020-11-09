@@ -8,8 +8,7 @@ import { UsersService } from 'src/app/users.service';
   styleUrls: ['./letter.component.scss'],
 })
 export class LetterComponent {
-  @Input() userKey: string;
-  @Input() user;
+  @Input() user: User;
   newGiftDescription: string;
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(e: KeyboardEvent): void {
@@ -25,7 +24,7 @@ export class LetterComponent {
   }
 
   onAddButtonClick(): void {
-    this.usersService.addGift(this.userKey, {
+    this.usersService.addGift(this.user.key, {
       description: this.newGiftDescription,
       link: 'http',
       reservation: '',
@@ -35,7 +34,6 @@ export class LetterComponent {
   }
 
   onRemoveButtonClick(giftKey: string): void {
-    console.log('remove', giftKey);
-    this.usersService.removeGift(this.userKey, giftKey);
+    this.usersService.removeGift(this.user.key, giftKey);
   }
 }
