@@ -46,4 +46,9 @@ export class LetterComponent {
   onRemoveButtonClick(giftKey: string): void {
     this.usersService.removeGift(this.user.key, giftKey);
   }
+
+  onLinkClick(link: string): void {
+    console.log(link);
+    window.open(link, '_blank');
+  }
 }
