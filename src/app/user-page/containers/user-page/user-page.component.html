@@ -1,6 +1,6 @@
 <div class="logOut" (click)="onLogOut()">wyloguj</div>
 
-<h1>{{ ((user$ | async) || emptyUser).fullName | uppercase }}</h1>
+<h1>{{ (userFullName$ | async) | uppercase }}</h1>
 
 <!--<div class="letterOwners">
   <button (click)="onOwnerButtonClick()">MÓJ LIST</button>
