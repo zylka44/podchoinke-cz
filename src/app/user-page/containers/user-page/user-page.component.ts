@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from 'src/app/models/users';
@@ -12,32 +12,30 @@ import { UsersService } from 'src/app/users.service';
 })
 export class UserPageComponent implements OnInit {
   users$: Observable<User[]>;
-  user$: Observable<User>;
-  otherUsers$: Observable<User[]>;
   name: string;
-  emptyUser: User = {
-    name: '',
-    fullName: '',
-    password: '',
-    gifts: [],
-  };
+  user$: Observable<User>;
+  userFullName$: Observable<string>;
+  userKey$: Observable<string>;
+  otherUsers$: Observable<User[]>;
 
   constructor(private router: Router, private usersService: UsersService) {}
-
-  ngOnInit(): void {
-    this.users$ = this.usersService.getUsers();
-    this.name = this.router.url.split('/')[2];
-    this.user$ = this.usersService.getUserOfName(this.name);
-    this.otherUsers$ = this.users$.pipe(
-      map((users) => users.filter((user) => user.name !== this.name))
-    );
-  }
 
   onLogOut(): void {
     this.router.navigate([`/login`]);
   }
 
-  onOwnerButtonClick(owner: string): void {
-    console.log(owner);
+  onOwnerButtonClick(ownerKey: string): void {
+    console.log(ownerKey);
+  }
+
+  ngOnInit(): void {
+    this.name = this.router.url.split('/')[2];
+    this.user$ = this.usersService.getUserOfName(this.name);
+    this.users$ = this.usersService.getUsers();
+    this.userFullName$ = this.user$.pipe(map((user) => user.fullName));
+    this.userKey$ = this.user$.pipe(map((user) => user.key));
+    this.otherUsers$ = this.users$.pipe(
+      map((users) => users.filter((user) => user.name !== this.name))
+    );
   }
 }

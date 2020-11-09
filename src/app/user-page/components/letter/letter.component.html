@@ -1,5 +1,5 @@
-<div class="gifts">
-  <div class="gift" *ngFor="let gift of (user || emptyUser).gifts">{{ gift.description}}</div>
+<div *ngFor="let gift of user?.gifts | keyvalue ">
+  <span class="removeGift" (click)="onRemoveButtonClick(gift?.key)"> - </span> {{ gift?.value.description }}
 </div>
 
 <div class="addGift">

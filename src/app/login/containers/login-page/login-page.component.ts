@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/users';
@@ -9,7 +9,7 @@ import { UsersService } from 'src/app/users.service';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit {
   users$: Observable<User[]> = this.usersService.getUsers();
   selectedUserName: string;
   selectedUserExpectedPassword: string;
@@ -22,6 +22,16 @@ export class LoginPageComponent {
   }
 
   constructor(private router: Router, private usersService: UsersService) {}
+
+  ngOnInit(): void {
+    // this.usersService.addUser('beata', 'Beata', 'roraty');
+    // this.usersService.addGift('-MLOgK-Cykz3IubDTNm3', {
+    //   description: 'kajak',
+    //   link: '',
+    //   reservation: '',
+    // });
+    // this.usersService.removeGift('MLOgK-Cykz3IubDTNm3', '-MLZ-tZfFyoI10eNZUiQ');
+  }
 
   onUserButtonClick(name: string, password: string): void {
     this.selectedUserName = name;
