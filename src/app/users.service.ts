@@ -32,7 +32,6 @@ export class UsersService {
   getUserOfName(name: string): Observable<User> {
     return this.getUsers().pipe(
       map((users) => users.find((user) => user.name === name))
-      /*      first(val => val !== null)*/
     );
   }
 
@@ -74,5 +73,14 @@ export class UsersService {
 
   updateGifts(key: string, gifts: Gift[]): void {
     this.users$.update(key, { gifts: [...gifts] });
+  }
+
+  updateGiftReservation(
+    userKey: string,
+    giftKey: string,
+    reservation: string
+  ): void {
+    console.log(userKey, giftKey, reservation);
+    this.db.list(`users/${userKey}/gifts/`).update(giftKey, { reservation });
   }
 }

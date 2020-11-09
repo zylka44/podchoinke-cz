@@ -1,5 +1,6 @@
-<div *ngFor="let gift of user?.gifts | keyvalue ">
+<div *ngFor="let gift of letterOwner?.gifts | keyvalue ">
   <ng-container *ngIf="gift?.value.description.length > 0">
+    <span class="reserve" (click)="onReserveClick(gift?.value.key)" >R</span>
     <span class="removeGift" (click)="onRemoveButtonClick(gift?.key)"> - </span>
     {{ gift?.value.description }}
     <span

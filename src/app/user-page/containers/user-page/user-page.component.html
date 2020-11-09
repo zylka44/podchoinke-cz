@@ -13,4 +13,4 @@
   </button>
 </div>
 
-<app-letter [user]="letterOwner$ | async"></app-letter>
+<app-letter [letterOwner]="letterOwner$ | async" [currentUser]="user$ | async"></app-letter>

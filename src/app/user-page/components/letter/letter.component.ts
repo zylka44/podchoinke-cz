@@ -8,7 +8,8 @@ import { UsersService } from 'src/app/users.service';
   styleUrls: ['./letter.component.scss'],
 })
 export class LetterComponent {
-  @Input() user: User;
+  @Input() letterOwner: User;
+  @Input() currentUser: User;
   newGiftDescription = '';
   newGiftLink = '';
   @HostListener('window:keydown', ['$event'])
@@ -33,7 +34,7 @@ export class LetterComponent {
       return;
     }
 
-    this.usersService.addGift(this.user.key, {
+    this.usersService.addGift(this.letterOwner.key, {
       description: this.newGiftDescription,
       link: this.newGiftLink,
       reservation: '',
@@ -44,11 +45,19 @@ export class LetterComponent {
   }
 
   onRemoveButtonClick(giftKey: string): void {
-    this.usersService.removeGift(this.user.key, giftKey);
+    this.usersService.removeGift(this.letterOwner.key, giftKey);
   }
 
   onLinkClick(link: string): void {
-    console.log(link);
     window.open(link, '_blank');
+  }
+
+  onReserveClick(giftKey: string): void {
+    console.log(this.currentUser.name);
+    this.usersService.updateGiftReservation(
+      this.letterOwner.key,
+      giftKey,
+      this.currentUser.name
+    );
   }
 }
