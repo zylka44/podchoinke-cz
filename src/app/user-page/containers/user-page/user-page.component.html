@@ -2,14 +2,14 @@
 
 <h1>{{ (userFullName$ | async) | uppercase }}</h1>
 
-<!--<div class="letterOwners">
-  <button (click)="onOwnerButtonClick()">MÓJ LIST</button>
+<div class="letterOwners">
+  <button (click)="onOwnerButtonClick('currentUser')">MÓJ LIST</button>
   &nbsp;
   <button
   *ngFor="let user of otherUsers$ | async"
   (click)="onOwnerButtonClick(user.key)">
     {{user.fullName}}
   </button>
-</div>-->
+</div>
 
-<app-letter [user]="user$ | async"></app-letter>
+<app-letter [user]="letterOwner$ | async"></app-letter>
