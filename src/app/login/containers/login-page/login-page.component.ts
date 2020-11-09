@@ -24,7 +24,13 @@ export class LoginPageComponent implements OnInit {
   constructor(private router: Router, private usersService: UsersService) {}
 
   ngOnInit(): void {
-    // this.usersService.addUser('magda', 'Magda', 'roraty');
+    // this.usersService.addUser('beata', 'Beata', 'roraty');
+    // this.usersService.addGift('-MLOgK-Cykz3IubDTNm3', {
+    //   description: 'kajak',
+    //   link: '',
+    //   reservation: '',
+    // });
+    // this.usersService.removeGift('MLOgK-Cykz3IubDTNm3', '-MLZ-tZfFyoI10eNZUiQ');
   }
 
   onUserButtonClick(name: string, password: string): void {

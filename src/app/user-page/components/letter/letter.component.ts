@@ -1,5 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, HostListener, Input } from '@angular/core';
 import { User } from 'src/app/models/users';
 import { UsersService } from 'src/app/users.service';
 
@@ -8,23 +7,9 @@ import { UsersService } from 'src/app/users.service';
   templateUrl: './letter.component.html',
   styleUrls: ['./letter.component.scss'],
 })
-export class LetterComponent implements OnInit {
-  @Input() userKey: string;
-  @Input() user$: Observable<User>;
+export class LetterComponent {
+  @Input() user: User;
   newGiftDescription: string;
-  emptyUser: User = {
-    key: '',
-    name: '',
-    fullName: '',
-    password: '',
-    gifts: [
-      {
-        description: '',
-        link: '',
-        reservation: '',
-      },
-    ],
-  };
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(e: KeyboardEvent): void {
     if (e.key === 'Enter' && this.newGiftDescription.length > 0) {
@@ -34,14 +19,12 @@ export class LetterComponent implements OnInit {
 
   constructor(private usersService: UsersService) {}
 
-  ngOnInit(): void {}
-
   onKey(event): void {
     this.newGiftDescription = event.target.value;
   }
 
   onAddButtonClick(): void {
-    this.usersService.addGift(this.userKey, {
+    this.usersService.addGift(this.user.key, {
       description: this.newGiftDescription,
       link: 'http',
       reservation: '',
@@ -51,7 +34,6 @@ export class LetterComponent implements OnInit {
   }
 
   onRemoveButtonClick(giftKey: string): void {
-    console.log('remove', giftKey);
-    this.usersService.removeGift(this.userKey, giftKey);
+    this.usersService.removeGift(this.user.key, giftKey);
   }
 }
