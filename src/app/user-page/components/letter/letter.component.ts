@@ -9,7 +9,8 @@ import { UsersService } from 'src/app/users.service';
 })
 export class LetterComponent {
   @Input() user: User;
-  newGiftDescription: string;
+  newGiftDescription = '';
+  newGiftLink = '';
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(e: KeyboardEvent): void {
     if (e.key === 'Enter' && this.newGiftDescription.length > 0) {
@@ -19,17 +20,26 @@ export class LetterComponent {
 
   constructor(private usersService: UsersService) {}
 
-  onKey(event): void {
+  onAddGiftKey(event): void {
     this.newGiftDescription = event.target.value;
   }
 
+  onAddLinkKey(event): void {
+    this.newGiftLink = event.target.value;
+  }
+
   onAddButtonClick(): void {
+    if (this.newGiftDescription.length <= 0) {
+      return;
+    }
+
     this.usersService.addGift(this.user.key, {
       description: this.newGiftDescription,
-      link: 'http',
+      link: this.newGiftLink,
       reservation: '',
     });
     document.getElementById('addGift')[`value`] = '';
+    document.getElementById('addLink')[`value`] = '';
     document.getElementById('addGift').focus();
   }
 

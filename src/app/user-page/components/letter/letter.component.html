@@ -1,8 +1,12 @@
 <div *ngFor="let gift of user?.gifts | keyvalue ">
-  <span class="removeGift" (click)="onRemoveButtonClick(gift?.key)"> - </span> {{ gift?.value.description }}
+  <ng-container *ngIf="gift?.value.description.length > 0">
+    <span class="removeGift" (click)="onRemoveButtonClick(gift?.key)"> - </span>
+    {{ gift?.value.description }}
+  </ng-container>
 </div>
 
 <div class="addGift">
-  <input id="addGift" #addGift autofocus (keyup)="onKey($event)"/>
+  <input id="addGift" #addGift autofocus (keyup)="onAddGiftKey($event)"/>
+  <input id="addLink" #addLink (keyup)="onAddLinkKey($event)"/>
   <button (click)="onAddButtonClick()">dodaj prezent</button>
 </div>
