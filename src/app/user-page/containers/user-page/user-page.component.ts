@@ -17,6 +17,7 @@ export class UserPageComponent implements OnInit {
   letterOwner$: Observable<User>;
   userFullName$: Observable<string>;
   otherUsers$: Observable<User[]>;
+  currentLetterOwner = 'currentUser';
 
   constructor(private router: Router, private usersService: UsersService) {}
 
@@ -36,6 +37,7 @@ export class UserPageComponent implements OnInit {
   }
 
   onOwnerButtonClick(userKey: string): void {
+    this.currentLetterOwner = userKey;
     this.letterOwner$ =
       userKey === 'currentUser'
         ? this.usersService.getUserOfName(this.name)

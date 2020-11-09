@@ -3,9 +3,10 @@
 <h1>{{ (userFullName$ | async) | uppercase }}</h1>
 
 <div class="letterOwners">
-  <button (click)="onOwnerButtonClick('currentUser')">MÓJ LIST</button>
+  <button [class.activeButton]="currentLetterOwner === 'currentUser'" (click)="onOwnerButtonClick('currentUser')">MÓJ LIST</button>
   &nbsp;
   <button
+  [class.activeButton]="currentLetterOwner === user.key"
   *ngFor="let user of otherUsers$ | async"
   (click)="onOwnerButtonClick(user.key)">
     {{user.fullName}}
