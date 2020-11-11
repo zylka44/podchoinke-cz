@@ -52,12 +52,39 @@ export class LetterComponent {
     window.open(link, '_blank');
   }
 
-  onReserveClick(giftKey: string): void {
-    console.log(this.currentUser.name);
+  onReserveClick(giftKey: string, currentReservation: string): void {
+    if (currentReservation.split(',').includes(this.currentUser.name)) {
+      return;
+    } else {
+      const updateReservation =
+        currentReservation + ',' + this.currentUser.name;
+      this.usersService.updateGiftReservation(
+        this.letterOwner.key,
+        giftKey,
+        updateReservation
+      );
+    }
+  }
+
+  onReservationNameClick(
+    reservation: string,
+    giftKey: string,
+    currentReservation: string
+  ): void {
+    const splitUpdateReservation = this.splitReservation(currentReservation);
+    splitUpdateReservation.splice(
+      splitUpdateReservation.findIndex((r) => r === reservation),
+      1
+    );
+    const updateReservation = splitUpdateReservation.join(',');
     this.usersService.updateGiftReservation(
       this.letterOwner.key,
       giftKey,
-      this.currentUser.name
+      updateReservation
     );
+  }
+
+  splitReservation(reservation: string): string[] {
+    return reservation.split(',');
   }
 }

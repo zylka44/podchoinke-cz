@@ -1,13 +1,30 @@
 <div *ngFor="let gift of letterOwner?.gifts | keyvalue ">
   <ng-container *ngIf="gift?.value.description.length > 0">
-    <span class="reserve" (click)="onReserveClick(gift?.value.key)" >R</span>
-    <span class="removeGift" (click)="onRemoveButtonClick(gift?.key)"> - </span>
+    <span class="reserve" (click)="onReserveClick(gift?.key, gift?.value.reservation)" >
+      R
+    </span>
+
+    <span class="removeGift" (click)="onRemoveButtonClick(gift?.key)">
+       -
+    </span>
+
     {{ gift?.value.description }}
+
     <span
       class="link"
       *ngIf="gift?.value.link.length > 0"
       (click)="onLinkClick(gift?.value.link)"
-    >link</span>
+    >
+    link
+    </span>
+
+    <span
+      class="reservation"
+      *ngFor="let reservation of splitReservation(gift?.value.reservation)"
+      (click)="onReservationNameClick(reservation, gift?.key, gift?.value.reservation)"
+    >
+      {{ reservation }}
+    </span>
   </ng-container>
 </div>
 

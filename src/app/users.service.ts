@@ -80,7 +80,6 @@ export class UsersService {
     giftKey: string,
     reservation: string
   ): void {
-    console.log(userKey, giftKey, reservation);
     this.db.list(`users/${userKey}/gifts/`).update(giftKey, { reservation });
   }
 }
