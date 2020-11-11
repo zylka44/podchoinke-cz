@@ -1,4 +1,15 @@
-.removeGift {
+.removeGift,
+.link {
   cursor: pointer;
   color: gray;
+}
+
+.reserve {
+  cursor: pointer;
+  color: lightblue;
+}
+
+.reservation {
+  cursor: pointer;
+  color: rgb(255, 77, 106);
 }

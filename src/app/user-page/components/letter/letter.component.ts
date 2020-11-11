@@ -8,8 +8,10 @@ import { UsersService } from 'src/app/users.service';
   styleUrls: ['./letter.component.scss'],
 })
 export class LetterComponent {
-  @Input() user: User;
-  newGiftDescription: string;
+  @Input() letterOwner: User;
+  @Input() currentUser: User;
+  newGiftDescription = '';
+  newGiftLink = '';
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(e: KeyboardEvent): void {
     if (e.key === 'Enter' && this.newGiftDescription.length > 0) {
@@ -19,21 +21,77 @@ export class LetterComponent {
 
   constructor(private usersService: UsersService) {}
 
-  onKey(event): void {
+  onAddGiftKey(event): void {
     this.newGiftDescription = event.target.value;
   }
 
+  onAddLinkKey(event): void {
+    this.newGiftLink = event.target.value;
+  }
+
   onAddButtonClick(): void {
-    this.usersService.addGift(this.user.key, {
+    if (this.newGiftDescription.length <= 0) {
+      return;
+    }
+
+    this.usersService.addGift(this.letterOwner.key, {
       description: this.newGiftDescription,
-      link: 'http',
+      link: this.newGiftLink,
       reservation: '',
     });
     document.getElementById('addGift')[`value`] = '';
-    document.getElementById('addGift').focus();
+    document.getElementById('addLink')[`value`] = '';
   }
 
   onRemoveButtonClick(giftKey: string): void {
-    this.usersService.removeGift(this.user.key, giftKey);
+    this.usersService.removeGift(this.letterOwner.key, giftKey);
+  }
+
+  onLinkClick(link: string): void {
+    window.open(link, '_blank');
+  }
+
+  onReserveClick(giftKey: string, currentReservation: string): void {
+    if (currentReservation.split(',').includes(this.currentUser.name)) {
+      return;
+    } else {
+      const updateReservation =
+        currentReservation + ',' + this.currentUser.name;
+      this.usersService.updateGiftReservation(
+        this.letterOwner.key,
+        giftKey,
+        updateReservation
+      );
+    }
+  }
+
+  onReservationNameClick(
+    reservation: string,
+    giftKey: string,
+    currentReservation: string
+  ): void {
+    if (this.currentUser.name !== reservation) {
+      return;
+    } else {
+      const splitUpdateReservation = this.splitReservation(currentReservation);
+      splitUpdateReservation.splice(
+        splitUpdateReservation.findIndex((r) => r === reservation),
+        1
+      );
+      const updateReservation = splitUpdateReservation.join(',');
+      this.usersService.updateGiftReservation(
+        this.letterOwner.key,
+        giftKey,
+        updateReservation
+      );
+    }
+  }
+
+  splitReservation(reservation: string): string[] {
+    return reservation.split(',');
+  }
+
+  ifCurentUserIsOwner(): boolean {
+    return this.letterOwner?.key === this.currentUser?.key;
   }
 }

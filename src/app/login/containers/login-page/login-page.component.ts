@@ -24,13 +24,11 @@ export class LoginPageComponent implements OnInit {
   constructor(private router: Router, private usersService: UsersService) {}
 
   ngOnInit(): void {
-    // this.usersService.addUser('beata', 'Beata', 'roraty');
-    // this.usersService.addGift('-MLOgK-Cykz3IubDTNm3', {
-    //   description: 'kajak',
-    //   link: '',
-    //   reservation: '',
-    // });
-    // this.usersService.removeGift('MLOgK-Cykz3IubDTNm3', '-MLZ-tZfFyoI10eNZUiQ');
+    // this.usersService.updateGiftReservation(
+    //   '-MLOgK-Cykz3IubDTNm3',
+    //   '-MLhlk_K69t3gAdY7dGS',
+    //   ''
+    // );
   }
 
   onUserButtonClick(name: string, password: string): void {
