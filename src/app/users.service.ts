@@ -9,8 +9,14 @@ import { first, map } from 'rxjs/operators';
 })
 export class UsersService {
   users$: AngularFireList<any>;
+  accessName = null;
+
   constructor(private db: AngularFireDatabase) {
     this.users$ = this.db.list('users');
+  }
+
+  setAccess(name: string | null): void {
+    this.accessName = name;
   }
 
   getUsers(): Observable<any> {

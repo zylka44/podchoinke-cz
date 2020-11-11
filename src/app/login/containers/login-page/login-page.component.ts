@@ -24,11 +24,7 @@ export class LoginPageComponent implements OnInit {
   constructor(private router: Router, private usersService: UsersService) {}
 
   ngOnInit(): void {
-    // this.usersService.updateGiftReservation(
-    //   '-MLOgK-Cykz3IubDTNm3',
-    //   '-MLhlk_K69t3gAdY7dGS',
-    //   ''
-    // );
+    // this.usersService.setAccess(null);
   }
 
   onUserButtonClick(name: string, password: string): void {
@@ -39,6 +35,7 @@ export class LoginPageComponent implements OnInit {
 
   onLogin(): void {
     if (this.selectedUserEnterdPassword === this.selectedUserExpectedPassword) {
+      this.usersService.setAccess(this.selectedUserName);
       this.router.navigate([`/user/${this.selectedUserName}`]);
     } else {
       document.getElementById('loginError').innerHTML = 'nieprawidłowe hasło';
