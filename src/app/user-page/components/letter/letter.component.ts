@@ -71,17 +71,21 @@ export class LetterComponent {
     giftKey: string,
     currentReservation: string
   ): void {
-    const splitUpdateReservation = this.splitReservation(currentReservation);
-    splitUpdateReservation.splice(
-      splitUpdateReservation.findIndex((r) => r === reservation),
-      1
-    );
-    const updateReservation = splitUpdateReservation.join(',');
-    this.usersService.updateGiftReservation(
-      this.letterOwner.key,
-      giftKey,
-      updateReservation
-    );
+    if (this.currentUser.name !== reservation) {
+      return;
+    } else {
+      const splitUpdateReservation = this.splitReservation(currentReservation);
+      splitUpdateReservation.splice(
+        splitUpdateReservation.findIndex((r) => r === reservation),
+        1
+      );
+      const updateReservation = splitUpdateReservation.join(',');
+      this.usersService.updateGiftReservation(
+        this.letterOwner.key,
+        giftKey,
+        updateReservation
+      );
+    }
   }
 
   splitReservation(reservation: string): string[] {
