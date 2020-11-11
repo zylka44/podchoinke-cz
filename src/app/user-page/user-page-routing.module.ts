@@ -11,7 +11,7 @@ const routes: Routes = [
       {
         path: ':name',
         component: UserPageComponent,
-        canActivate: [AccessGuard],
+        // canActivate: [AccessGuard],
       },
     ],
   },

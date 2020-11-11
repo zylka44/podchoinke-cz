@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/users';
-import { UsersService } from 'src/app/users.service';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-login-page',
