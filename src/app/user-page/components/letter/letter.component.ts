@@ -87,4 +87,8 @@ export class LetterComponent {
   splitReservation(reservation: string): string[] {
     return reservation.split(',');
   }
+
+  ifCurentUserIsOwner(): boolean {
+    return this.letterOwner?.key === this.currentUser?.key;
+  }
 }

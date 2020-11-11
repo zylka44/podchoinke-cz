@@ -42,6 +42,5 @@ export class UserPageComponent implements OnInit {
       userKey === 'currentUser'
         ? this.usersService.getUserOfName(this.name)
         : this.usersService.getUserOfKey(userKey);
-    document.getElementById('addGift').focus();
   }
 }
