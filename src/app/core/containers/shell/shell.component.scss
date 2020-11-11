@@ -7,8 +7,8 @@ $shell-aspect-ratio: 3 / 4;
   height: 100%;
   background: {
     position: center;
-    // image: url(map-get($core, background));
-    color: yellow;
+    image: url("/assets/images/core/background.png");
+    color: #14444e;
     size: cover;
     repeat: no-repeat;
   }
