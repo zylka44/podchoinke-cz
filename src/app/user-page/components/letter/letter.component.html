@@ -31,7 +31,7 @@
 </div>
 
 <div *ngIf="ifCurentUserIsOwner()" class="addGift">
-  <input id="addGift" #addGift autofocus (keyup)="onAddGiftKey($event)"/>
+  <input id="addGift" #addGift (keyup)="onAddGiftKey($event)"/>
   <input id="addLink" #addLink (keyup)="onAddLinkKey($event)"/>
   <button (click)="onAddButtonClick()">dodaj prezent</button>
 </div>

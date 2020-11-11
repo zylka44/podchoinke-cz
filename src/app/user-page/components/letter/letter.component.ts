@@ -41,7 +41,6 @@ export class LetterComponent {
     });
     document.getElementById('addGift')[`value`] = '';
     document.getElementById('addLink')[`value`] = '';
-    document.getElementById('addGift').focus();
   }
 
   onRemoveButtonClick(giftKey: string): void {
