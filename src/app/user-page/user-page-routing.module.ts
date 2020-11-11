@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AccessGuard } from '../access.guard';
 import { UserPageComponent } from './containers/user-page/user-page.component';
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
       {
         path: ':name',
         component: UserPageComponent,
+        canActivate: [AccessGuard],
       },
     ],
   },

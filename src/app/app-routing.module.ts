@@ -6,7 +6,10 @@ import { UserPageModule } from './user-page/user-page.module';
 
 const routes: Routes = [
   { path: 'login', loadChildren: () => LoginModule },
-  { path: 'user', loadChildren: () => UserPageModule },
+  {
+    path: 'user',
+    loadChildren: () => UserPageModule,
+  },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', loadChildren: () => ExtrasModule },
 ];
