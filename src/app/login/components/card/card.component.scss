@@ -22,7 +22,8 @@
   flex-direction: column;
 
   .login-input {
-    font-family: DancingScript;
+    font-family: JosefinSans;
+    color: $primary-font-color;
     font-size: getUnit(14);
     width: getUnit(100);
     height: getUnit(20);
@@ -32,7 +33,7 @@
   }
 
   .login-button {
-    font-family: DancingScript;
+    font-family: JosefinSans;
     font-size: getUnit(14);
     color: $primary-font-color;
     margin-top: 10%;
