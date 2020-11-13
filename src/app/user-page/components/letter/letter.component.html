@@ -1,37 +1,32 @@
-<div *ngFor="let gift of letterOwner?.gifts | keyvalue ">
-  <ng-container *ngIf="gift?.value.description.length > 0">
-    <span *ngIf="!ifCurentUserIsOwner()" class="reserve" (click)="onReserveClick(gift?.key, gift?.value.reservation)" >
-      R
-    </span>
-
-    <span *ngIf="ifCurentUserIsOwner()" class="removeGift" (click)="onRemoveButtonClick(gift?.key)">
-       -
-    </span>
-
-    {{ gift?.value.description }}
-
-    <span
-      class="link"
-      *ngIf="gift?.value.link.length > 0"
-      (click)="onLinkClick(gift?.value.link)"
-    >
-    link
-    </span>
-
-    <ng-container *ngIf="!ifCurentUserIsOwner()">
-      <span
-        class="reservation"
-        *ngFor="let reservation of splitReservation(gift?.value.reservation)"
-        (click)="onReservationNameClick(reservation, gift?.key, gift?.value.reservation)"
-      >
-        {{ reservation }}
-      </span>
-    </ng-container>
+<div class="gifts">
+  <ng-container *ngFor="let gift of letterOwner?.gifts | keyvalue">
+    <div *ngIf="gift?.value.description.length > 0">
+      <app-user-page-gift
+        [gift]="gift?.value"
+        [isLetterOwners]="ifCurentUserIsOwner()"
+        (onGiftRemoved)="onRemoveButtonClick(gift?.key)"
+        (onGiftReserved)="onReserveClick(gift?.key, gift?.value.reservation)"
+        (onLinkActivated)="onLinkClick(gift?.value.link)"
+        (onReservationNameActivated)="onReservationNameClick($event, gift?.key, gift?.value.reservation)"
+      ></app-user-page-gift>
+    </div>
   </ng-container>
 </div>
 
 <div *ngIf="ifCurentUserIsOwner()" class="addGift">
-  <input id="addGift" #addGift (keyup)="onAddGiftKey($event)"/>
-  <input id="addLink" #addLink (keyup)="onAddLinkKey($event)"/>
-  <button (click)="onAddButtonClick()">dodaj prezent</button>
+  <button class="add-button" (click)="onAddButtonClick()">+</button>
+  <input
+    id="addGift"
+    #addGift
+    (keyup)="onAddGiftKey($event)"
+    placeholder="prezent"
+    spellcheck="false"
+  />
+  <input
+    id="addLink"
+    #addLink
+    (keyup)="onAddLinkKey($event)"
+    placeholder="link"
+    spellcheck="false"
+  />
 </div>

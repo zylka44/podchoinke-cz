@@ -1,15 +1,25 @@
-.removeGift,
-.link {
-  cursor: pointer;
-  color: gray;
+@import "../../../../styles/constants.scss";
+@import "../../../../styles/colors.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 80%;
 }
 
-.reserve {
+.add-button {
+  height: getUnit(14);
+  width: getUnit(14);
   cursor: pointer;
-  color: lightblue;
-}
+  color: $color4;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0 getUnit(4);
+  border: getUnit(2) solid $background-color;
 
-.reservation {
-  cursor: pointer;
-  color: rgb(255, 77, 106);
+  &:hover {
+    border-color: $color4;
+    font-weight: 600;
+  }
 }

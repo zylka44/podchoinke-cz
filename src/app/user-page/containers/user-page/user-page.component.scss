@@ -1,14 +1,17 @@
+@import "../../../../styles/constants.scss";
+
 :host {
-  display: block;
+  display: grid;
   height: 100%;
-  text-align: center;
+  grid:
+    ". .       ." getUnit(150)
+    ". content ." auto
+    / 10% 80% 10%;
 }
 
-.logOut {
-  color: gray;
-  cursor: pointer;
-}
-
-.activeButton {
-  background-color: gold;
+.content {
+  grid-area: content;
+  background-color: #faf7f2;
+  box-shadow: 0 getUnit(4) getUnit(8) 0 #dad6d1,
+    0 getUnit(6) getUnit(20) 0 #dad6d1;
 }
