@@ -1,0 +1,52 @@
+@import "../../../../styles/fonts.scss";
+@import "../../../../styles/constants.scss";
+@import "../../../../styles/colors.scss";
+
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.title {
+  font-family: DancingScript;
+  font-size: getUnit(30);
+  color: $header-color;
+  margin-bottom: 3%;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+
+  .login-input {
+    font-family: JosefinSans;
+    color: $primary-font-color;
+    font-size: getUnit(14);
+    width: getUnit(100);
+    height: getUnit(20);
+    margin: 3% 0;
+    text-align: center;
+    border: getUnit(1) solid $primary-font-color;
+  }
+
+  .login-button {
+    font-family: JosefinSans;
+    font-size: getUnit(14);
+    color: $primary-font-color;
+    margin-top: 10%;
+
+    &:hover {
+      font-weight: 600;
+    }
+  }
+}
+
+#loginError {
+  position: absolute;
+  text-align: center;
+  font-size: getUnit(8);
+  top: 70%;
+}

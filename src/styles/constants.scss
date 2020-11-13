@@ -1,0 +1,15 @@
+$shell-aspect-ratio: 3 / 4;
+$exercise-aspect-ratio: 655 / 930;
+
+@mixin scaleOnHover($defaultScale, $hoverScale) {
+  backface-visibility: hidden;
+  transform: perspective(1px) scale($defaultScale);
+
+  &:hover {
+    transform: perspective(1px) scale($hoverScale);
+  }
+}
+
+@function getUnit($size) {
+  @return calc(#{$size * 0.2} * min(#{1vw * $shell-aspect-ratio}, 1vh));
+}

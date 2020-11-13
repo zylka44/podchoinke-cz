@@ -1,6 +1,6 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { User } from 'src/app/models/users';
-import { UsersService } from 'src/app/users.service';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-letter',

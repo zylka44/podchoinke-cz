@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Gift, User } from './models/users';
+import { Gift, User } from '../../models/users';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 

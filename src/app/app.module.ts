@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { ExtrasModule } from './extras/extras.module';
 import { LoginModule } from './login/login.module';
 import { UserPageModule } from './user-page/user-page.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { UserPageModule } from './user-page/user-page.module';
     ExtrasModule,
     LoginModule,
     UserPageModule,
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
