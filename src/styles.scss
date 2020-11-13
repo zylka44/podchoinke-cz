@@ -7,7 +7,7 @@ body {
   height: 100vh;
   font-family: "NaomiSans EFN", Helvetica, sans-serif;
   font-size: getUnit(10);
-  color: $color0;
+  color: $primary-font-color;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -20,9 +20,9 @@ body {
 
 button {
   outline: none;
-  // border: none;
+  border: none;
   cursor: pointer;
-  // background: transparent;
+  background: transparent;
   padding: 0;
 }
 

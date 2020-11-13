@@ -1,3 +1,5 @@
+@import "../../../../styles/colors.scss";
+
 $shell-aspect-ratio: 3 / 4;
 
 :host {
@@ -8,7 +10,7 @@ $shell-aspect-ratio: 3 / 4;
   background: {
     position: center;
     image: url("/assets/images/core/background.png");
-    color: #faf7f2;
+    color: $color5;
     size: cover;
     repeat: no-repeat;
   }

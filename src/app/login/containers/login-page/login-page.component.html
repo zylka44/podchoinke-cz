@@ -1,15 +1,4 @@
-<h1>POD CHOINKĘ</h1>
-
-<div class="users">
-  <button
-  *ngFor="let user of users$ | async"
-  (click)="onUserButtonClick(user.name, user.password)">
-    {{user.fullName}}
-  </button>
+<div class="content">
+  <app-card [users]="users$ | async"></app-card>
 </div>
 
-<div id="login" class="login" [style.display]="selectedUserName ? 'inline' : 'none'">
-  <input id="password" type="password" #password (input)="onInputChange(password.value)"/>
-  <button (click)="onLogin()">zaloguj</button>
-  <div id="loginError"></div>
-</div>

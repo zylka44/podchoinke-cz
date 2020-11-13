@@ -1,0 +1,26 @@
+<h1 class="title">pod choinkę</h1>
+
+<div class="login-container">
+  <input
+    class="login-input"
+    id="login"
+    type="text"
+    #login
+    (input)="onLoginInputChange(login.value)"
+    placeholder="login"
+    spellcheck="false"
+    autofocus
+  />
+  <input
+    class="login-input"
+    id="password"
+    type="password"
+    #password
+    (input)="onPasswordInputChange(password.value)"
+    placeholder="hasło"
+    spellcheck="false"
+  />
+  <button class="login-button" (click)="onLogin()">zaloguj</button>
+</div>
+
+<div id="loginError"> </div>
