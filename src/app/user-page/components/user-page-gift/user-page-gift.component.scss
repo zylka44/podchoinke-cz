@@ -11,6 +11,40 @@
   margin: getUnit(10) 0;
 }
 
+.reserve {
+  height: getUnit(16);
+  width: getUnit(16);
+  cursor: pointer;
+  color: $color4;
+  border-radius: 50%;
+  margin: 0 getUnit(4);
+  border: getUnit(2) solid $background-color;
+
+  &:hover {
+    border-color: $color4;
+    font-weight: 600;
+  }
+}
+
+.gift-description {
+  margin: 0 getUnit(4);
+}
+
+.link {
+  cursor: pointer;
+  color: $color3;
+  margin: 0 getUnit(4);
+
+  &:hover {
+    font-weight: 600;
+  }
+}
+
+.reservation {
+  cursor: pointer;
+  color: $color1;
+}
+
 .actions {
   position: relative;
 
@@ -18,40 +52,27 @@
     height: getUnit(16);
     width: getUnit(16);
     cursor: pointer;
-    color: $color4;
+    color: lightgray;
     border-radius: 50%;
     text-align: center;
     margin: 0 getUnit(2);
-    border: getUnit(2) solid $background-color;
+    border: getUnit(0.3) solid lightgray;
     font-weight: 600;
 
     &:hover {
-      border-color: $color4;
-      font-weight: 600;
-    }
-  }
-
-  .reserve {
-    height: getUnit(16);
-    width: getUnit(16);
-    cursor: pointer;
-    color: $color4;
-    border-radius: 50%;
-    margin: 0 getUnit(4);
-    border: getUnit(2) solid $background-color;
-
-    &:hover {
-      border-color: $color4;
+      border: getUnit(2) solid $color4;
+      background-color: $color4;
+      color: $background-color;
       font-weight: 600;
     }
   }
 
   .info {
     position: absolute;
-    right: 100%;
+    left: 100%;
     transition: all 0.2s ease-in-out;
     transform: scaleX(0);
-    transform-origin: right;
+    transform-origin: left;
     background-color: $color4;
     color: $background-color;
     padding: getUnit(4);
@@ -64,23 +85,4 @@
     display: block;
     transform: scaleX(1);
   }
-}
-
-.gift-description {
-  margin: 0 getUnit(4);
-}
-
-.link {
-  cursor: pointer;
-  color: gray;
-  margin: 0 getUnit(4);
-
-  &:hover {
-    font-weight: 600;
-  }
-}
-
-.reservation {
-  cursor: pointer;
-  color: rgb(255, 77, 106);
 }

@@ -1,16 +1,6 @@
-<div class="actions">
-  <div class="info">
-    {{ isLetterOwners ? 'usuń' : 'rezerwuj'}}
-  </div>
-
-  <button *ngIf="!isLetterOwners" class="reserve" (click)="onReserveButtonClick()" >
-    R
-  </button>
-
-  <button *ngIf="isLetterOwners" class="removeGift" (click)="onRemoveButtonCLick()">
-   -
-  </button>
-</div>
+<button *ngIf="!isLetterOwners" class="reserve" (click)="onReserveButtonClick()" >
+  R
+</button>
 
 <div class="gift-description">
   {{ gift?.description }}
@@ -33,3 +23,13 @@
     {{ reservation }}
   </button>
 </ng-container>
+
+<div class="actions">
+  <div class="info">
+    {{ isLetterOwners ? 'usuń' : 'rezerwuj'}}
+  </div>
+
+  <button *ngIf="isLetterOwners" class="removeGift" (click)="onRemoveButtonCLick()">
+   -
+  </button>
+</div>

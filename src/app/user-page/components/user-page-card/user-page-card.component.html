@@ -1,12 +1,12 @@
-<h1 class="userName">{{ userFullName$ | async }}</h1>
+<h1 class="user-name">{{ userFullName$ | async }}</h1>
 
-<div class="letterOwners">
+<div class="letter-owners">
   <button
   class="owner-button"
   [class.active-button]="currentLetterOwner === 'currentUser'"
   (click)="onOwnerButtonClick('currentUser')"
   >
-    MÓJ LIST
+    MOJA LISTA
   </button>
   &nbsp;
   <button

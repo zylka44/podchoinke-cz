@@ -14,7 +14,6 @@
 </div>
 
 <div *ngIf="ifCurentUserIsOwner()" class="addGift">
-  <button class="add-button" (click)="onAddButtonClick()">+</button>
   <input
     id="addGift"
     #addGift
@@ -29,4 +28,5 @@
     placeholder="link"
     spellcheck="false"
   />
+  <button class="add-button" (click)="onAddButtonClick()">+</button>
 </div>

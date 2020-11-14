@@ -10,13 +10,13 @@
   position: relative;
 }
 
-.userName {
+.user-name {
   font-family: DancingScript;
   font-size: getUnit(26);
   color: $header-color;
 }
 
-.letterOwners {
+.letter-owners {
   display: flex;
   justify-content: center;
   width: 100%;
