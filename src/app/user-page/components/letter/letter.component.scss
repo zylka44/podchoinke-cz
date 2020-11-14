@@ -8,18 +8,52 @@
   width: 80%;
 }
 
-.add-button {
-  height: getUnit(14);
-  width: getUnit(14);
-  cursor: pointer;
-  color: $color4;
-  border-radius: 50%;
-  text-align: center;
-  margin: 0 getUnit(4);
-  border: getUnit(2) solid $background-color;
+#addGift,
+#addLink {
+  width: getUnit(395);
+  height: getUnit(20);
+  margin: getUnit(1.5) 0;
+  border: getUnit(0.1) solid lightgray;
+}
 
-  &:hover {
-    border-color: $color4;
-    font-weight: 600;
+.action {
+  position: relative;
+
+  .add-button {
+    height: getUnit(15);
+    width: getUnit(15);
+    cursor: pointer;
+    color: $color4;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 getUnit(4);
+    border: getUnit(1) solid lightgray;
+
+    &:hover {
+      border-color: $color0;
+      background-color: $color0;
+      color: $background-color;
+      font-weight: 600;
+    }
+  }
+
+  .info {
+    position: absolute;
+    left: 90%;
+    top: -35%;
+    transition: all 0.2s ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+    background-color: $color0;
+    color: $background-color;
+    padding: getUnit(4);
+    width: getUnit(40);
+    text-align: center;
+    font-size: getUnit(9);
+    pointer-events: none;
+  }
+
+  &:hover .info {
+    transform: scaleX(1);
   }
 }

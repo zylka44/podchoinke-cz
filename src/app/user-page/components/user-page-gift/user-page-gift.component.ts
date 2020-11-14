@@ -9,10 +9,12 @@ import { Gift } from 'src/app/models/users';
 export class UserPageGiftComponent {
   @Input() gift: Gift;
   @Input() isLetterOwners: boolean;
+  @Input() reservedByCurrentUser: boolean;
   @Output() onGiftRemoved = new EventEmitter();
   @Output() onGiftReserved = new EventEmitter();
   @Output() onLinkActivated = new EventEmitter();
   @Output() onReservationNameActivated = new EventEmitter<string>();
+  giftReserved: boolean;
 
   onReserveButtonClick(): void {
     this.onGiftReserved.emit();

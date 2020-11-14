@@ -1,5 +1,8 @@
-<button *ngIf="!isLetterOwners" class="reserve" (click)="onReserveButtonClick()" >
-  R
+<button
+  *ngIf="!isLetterOwners"
+  [class.inactive]="reservedByCurrentUser"
+  class="reserve"
+  (click)="onReserveButtonClick()" >
 </button>
 
 <div class="gift-description">
@@ -10,9 +13,7 @@
   class="link"
   *ngIf="gift?.link.length > 0"
   (click)="onLinkClick(gift?.link)"
->
-  link
-</button>
+></button>
 
 <ng-container *ngIf="!isLetterOwners">
   <button
@@ -26,7 +27,7 @@
 
 <div class="actions">
   <div class="info">
-    {{ isLetterOwners ? 'usuń' : 'rezerwuj'}}
+    usuń
   </div>
 
   <button *ngIf="isLetterOwners" class="removeGift" (click)="onRemoveButtonCLick()">

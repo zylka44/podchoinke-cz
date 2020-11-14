@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: baseline;
+  align-items: center;
   height: 100%;
   width: 100%;
   margin: getUnit(10) 0;
@@ -15,34 +15,44 @@
   height: getUnit(16);
   width: getUnit(16);
   cursor: pointer;
-  color: $color4;
-  border-radius: 50%;
-  margin: 0 getUnit(4);
-  border: getUnit(2) solid $background-color;
+  margin-right: getUnit(4);
+  background-image: url("/assets/images/user-page/gift.svg");
+  background-size: cover;
 
   &:hover {
-    border-color: $color4;
-    font-weight: 600;
+    animation: pulse 1s;
   }
 }
 
+.inactive {
+  background-image: url("/assets/images/user-page/gift-inactive.svg");
+  pointer-events: none;
+}
+
 .gift-description {
-  margin: 0 getUnit(4);
+  font-size: getUnit(12);
+  margin-right: getUnit(4);
 }
 
 .link {
+  width: getUnit(16);
+  height: getUnit(16);
   cursor: pointer;
   color: $color3;
-  margin: 0 getUnit(4);
+  margin-right: getUnit(4);
+  background-image: url("/assets/images/user-page/link.svg");
+  background-size: cover;
+  border-radius: 50%;
 
   &:hover {
-    font-weight: 600;
+    background-image: url("/assets/images/user-page/link-hover.svg");
   }
 }
 
 .reservation {
   cursor: pointer;
   color: $color1;
+  margin-right: getUnit(4);
 }
 
 .actions {
@@ -56,7 +66,7 @@
     border-radius: 50%;
     text-align: center;
     margin: 0 getUnit(2);
-    border: getUnit(0.3) solid lightgray;
+    border: getUnit(0.3) solid #d3d3d3;
     font-weight: 600;
 
     &:hover {
@@ -82,7 +92,18 @@
   }
 
   &:hover .info {
-    display: block;
     transform: scaleX(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }

@@ -4,6 +4,7 @@
       <app-user-page-gift
         [gift]="gift?.value"
         [isLetterOwners]="ifCurentUserIsOwner()"
+        [reservedByCurrentUser]="isGiftReserved(gift?.value.reservation)"
         (onGiftRemoved)="onRemoveButtonClick(gift?.key)"
         (onGiftReserved)="onReserveClick(gift?.key, gift?.value.reservation)"
         (onLinkActivated)="onLinkClick(gift?.value.link)"
@@ -14,19 +15,29 @@
 </div>
 
 <div *ngIf="ifCurentUserIsOwner()" class="addGift">
-  <input
-    id="addGift"
-    #addGift
-    (keyup)="onAddGiftKey($event)"
-    placeholder="prezent"
-    spellcheck="false"
-  />
-  <input
-    id="addLink"
-    #addLink
-    (keyup)="onAddLinkKey($event)"
-    placeholder="link"
-    spellcheck="false"
-  />
-  <button class="add-button" (click)="onAddButtonClick()">+</button>
+  <div class="add-button-container">
+    <input
+      id="addGift"
+      #addGift
+      (keyup)="onAddGiftKey($event)"
+      placeholder="prezent"
+      spellcheck="false"
+    />
+    <span class="action">
+      <div class="info">
+        dodaj
+      </div>
+
+      <button class="add-button" (click)="onAddButtonClick()">+</button>
+    </span>
+  </div>
+  <div>
+    <input
+      id="addLink"
+      #addLink
+      (keyup)="onAddLinkKey($event)"
+      placeholder="link"
+      spellcheck="false"
+    />
+  </div>
 </div>

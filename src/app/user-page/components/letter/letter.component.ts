@@ -94,4 +94,8 @@ export class LetterComponent {
   ifCurentUserIsOwner(): boolean {
     return this.letterOwner?.key === this.currentUser?.key;
   }
+
+  isGiftReserved(reservation: string): boolean {
+    return reservation.includes(this.currentUser?.fullName);
+  }
 }
