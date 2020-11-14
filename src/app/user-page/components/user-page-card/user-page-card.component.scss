@@ -1,0 +1,45 @@
+@import "../../../../styles/fonts.scss";
+@import "../../../../styles/constants.scss";
+@import "../../../../styles/colors.scss";
+
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.user-name {
+  font-family: DancingScript;
+  font-size: getUnit(26);
+  color: $header-color;
+}
+
+.letter-owners {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 3%;
+
+  .owner-button {
+    margin: 0 1%;
+  }
+
+  .active-button {
+    color: $color1;
+    font-weight: 600;
+    border-bottom: getUnit(1) solid $color1;
+  }
+}
+
+.logOut {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  cursor: pointer;
+
+  &:hover {
+    font-weight: 600;
+  }
+}

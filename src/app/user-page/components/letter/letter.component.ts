@@ -52,11 +52,11 @@ export class LetterComponent {
   }
 
   onReserveClick(giftKey: string, currentReservation: string): void {
-    if (currentReservation.split(',').includes(this.currentUser.name)) {
+    if (currentReservation.split(',').includes(this.currentUser.fullName)) {
       return;
     } else {
       const updateReservation =
-        currentReservation + ',' + this.currentUser.name;
+        currentReservation + ',' + this.currentUser.fullName;
       this.usersService.updateGiftReservation(
         this.letterOwner.key,
         giftKey,
@@ -70,7 +70,7 @@ export class LetterComponent {
     giftKey: string,
     currentReservation: string
   ): void {
-    if (this.currentUser.name !== reservation) {
+    if (this.currentUser.fullName !== reservation) {
       return;
     } else {
       const splitUpdateReservation = this.splitReservation(currentReservation);
@@ -93,5 +93,9 @@ export class LetterComponent {
 
   ifCurentUserIsOwner(): boolean {
     return this.letterOwner?.key === this.currentUser?.key;
+  }
+
+  isGiftReserved(reservation: string): boolean {
+    return reservation.includes(this.currentUser?.fullName);
   }
 }

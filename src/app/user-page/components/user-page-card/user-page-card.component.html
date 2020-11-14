@@ -1,0 +1,23 @@
+<h1 class="user-name">{{ userFullName$ | async }}</h1>
+
+<div class="letter-owners">
+  <button
+  class="owner-button"
+  [class.active-button]="currentLetterOwner === 'currentUser'"
+  (click)="onOwnerButtonClick('currentUser')"
+  >
+    MOJA LISTA
+  </button>
+  &nbsp;
+  <button
+  class="owner-button"
+  [class.active-button]="currentLetterOwner === user.key"
+  *ngFor="let user of otherUsers$ | async"
+  (click)="onOwnerButtonClick(user.key)">
+    {{user.fullName}}
+  </button>
+</div>
+
+<app-letter [letterOwner]="letterOwner$ | async" [currentUser]="user$ | async"></app-letter>
+
+<div class="logOut" (click)="onLogOut()">wyloguj</div>

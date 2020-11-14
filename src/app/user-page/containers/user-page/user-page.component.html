@@ -1,16 +1,3 @@
-<div class="logOut" (click)="onLogOut()">wyloguj</div>
-
-<h1>{{ (userFullName$ | async) | uppercase }}</h1>
-
-<div class="letterOwners">
-  <button [class.activeButton]="currentLetterOwner === 'currentUser'" (click)="onOwnerButtonClick('currentUser')">MÓJ LIST</button>
-  &nbsp;
-  <button
-  [class.activeButton]="currentLetterOwner === user.key"
-  *ngFor="let user of otherUsers$ | async"
-  (click)="onOwnerButtonClick(user.key)">
-    {{user.fullName}}
-  </button>
+<div class="content">
+  <app-user-page-card></app-user-page-card>
 </div>
-
-<app-letter [letterOwner]="letterOwner$ | async" [currentUser]="user$ | async"></app-letter>

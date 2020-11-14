@@ -9,6 +9,7 @@ body {
   font-family: "JosefinSans", Helvetica, sans-serif;
   font-size: getUnit(10);
   color: $primary-font-color;
+  background-color: $background-color;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -16,7 +17,15 @@ body {
 }
 
 body {
-  overflow: hidden;
+  // overflow: hidden;
+}
+
+input {
+  font-family: JosefinSans;
+}
+
+::placeholder {
+  color: $color3;
 }
 
 button {
@@ -25,6 +34,7 @@ button {
   cursor: pointer;
   background: transparent;
   padding: 0;
+  font-family: JosefinSans;
 }
 
 button::-moz-focus-inner {
