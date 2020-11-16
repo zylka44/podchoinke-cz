@@ -1,3 +1,3 @@
-# Podchoinke
+# podchoinke
 
 `yarn start` - uruchomienie aplikacji
