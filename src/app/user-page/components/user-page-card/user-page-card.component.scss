@@ -12,7 +12,7 @@
 
 .user-name {
   font-family: DancingScript;
-  font-size: getUnit(26);
+  font-size: getUnit(36);
   color: $header-color;
 }
 
@@ -24,6 +24,7 @@
 
   .owner-button {
     margin: 0 1%;
+    font-size: getUnit(14);
   }
 
   .active-button {
@@ -38,6 +39,7 @@
   top: 5%;
   right: 5%;
   cursor: pointer;
+  font-size: getUnit(14);
 
   &:hover {
     font-weight: 600;
